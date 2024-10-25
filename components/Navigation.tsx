@@ -14,9 +14,9 @@ type NavItem = {
 const navItems: NavItem[] = [
     { name: 'Mine', image: mine_nav, view: 'mine' },
     { name: 'Friends', image: friends_nav, view: 'friends' },
-    { name: 'OWL', image: main_button, view: 'game' },
-    { name: 'Earn', image: earn_nav, view: 'earn' },
-    { name: 'Airdrop', image: avatar, view: 'airdrop' },
+    { name: 'Tap', image: main_button, view: 'game' },
+    { name: 'Tasks', image: earn_nav, view: 'earn' },
+    { name: 'Rewards', image: avatar, view: 'airdrop' },
 ];
 
 interface NavigationProps {
