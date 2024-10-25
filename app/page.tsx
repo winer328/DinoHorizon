@@ -1,19 +1,19 @@
 'use client'
 
-import { dino_logo } from '@/images';
+import { main_character } from '@/images';
 import Image from 'next/image';
 import Link from 'next/link';
 
 // Home component: Main landing page of the application
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-screen bg-[#1EB3FF] ">
+    <div className="flex justify-center items-center h-screen bg-[#000000] ">
       <div className="w-full max-w-xl text-white flex flex-col items-center ">
         <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
             <Image
-              src={dino-logo}
-              alt="dino logo"
+              src={main_character}
+              alt="Main Character"
               fill
               style={{
                 objectFit: 'cover',
