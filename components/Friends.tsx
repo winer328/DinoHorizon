@@ -105,8 +105,8 @@ export default function Friends() {
           <div className="mt-[2px] bg-[#000000] rounded-t-[46px] h-full overflow-y-auto no-scrollbar">
             <div className="px-4 pt-1 pb-24">
               <div className="relative">
-                <h1 className="text-2xl text-center mt-4 mb-2 text-[#7C1C1C] font-bold">Invite Friends!</h1>
-                <p className="text-center text-gray-400 mb-8">You and your friend will receive bonuses</p>
+                <h1 className="text-2xl text-center mt-4 mb-2 text-[#7C1C1C] font-bold">Invite Friends !</h1>
+                <p className="text-center text-gray-400 mb-8">You and your friend will receive DINO coins!!!</p>
 
                 <div className="space-y-2">
                   <div className="flex justify-between items-center bg-gradient-to-r from-red-900 rounded-lg p-4">
@@ -178,7 +178,7 @@ export default function Friends() {
 
                 <div className="mt-8">
                   <div className="flex justify-between items-center">
-                    <h2 className="text-lg text-[#751A1A] font-bold ">List of your friends ({referralCount})</h2>
+                    <h2 className="text-lg text-[#751A1A] font-bold ">Invited Friends ({referralCount})</h2>
                     <svg
                       className="w-6 h-6 text-[#741A1A] cursor-pointer"
                       onClick={fetchReferrals}
