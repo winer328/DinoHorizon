@@ -24,11 +24,11 @@ html, body {
 }
 
 .progress-gradient {
-  background: linear-gradient(to right, #450202, #FA0001, #550909);
+  background: linear-gradient(to right, #D9430C, #33B4F2, #F4B221);
 }
 
 .top-glow {
-  box-shadow: 0 -26px 20px #470000;
+  box-shadow: 0 -26px 20px #33B4F2;
 }
 
 /* Define the keyframes for the blinking animation */
