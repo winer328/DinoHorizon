@@ -12,8 +12,8 @@ export default function Home() {
         <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
             <Image
-              src={main_character}
-              alt="Main Character"
+              src={main_button}
+              alt="Main Button"
               fill
               style={{
                 objectFit: 'cover',
@@ -24,8 +24,8 @@ export default function Home() {
           </div>
         </div>
         
-        <h1 className="text-3xl font-bold mb-4 Dark_owl"> 🦖 Dino Horizon 🦖</h1>
-        <p className="text-xl mb-2"> <Link href="/clicker" className="neon">Start</Link></p>        
+        <h1 className="text-3xl font-bold mb-4 Dark_owl">Dino Horizon</h1>
+        <p className="text-xl mb-2"> <Link href="/clicker" className="neon">🦖 Start </Link></p>        
       </div>
     </div>
   );
