@@ -1,4 +1,6 @@
 // Home component: Main landing page of the application
+import Image from 'next/image';
+import Link from 'next/link';
 export default function Home() {
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-black via-gray-800 to-black">
