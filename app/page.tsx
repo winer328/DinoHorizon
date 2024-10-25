@@ -13,7 +13,7 @@ export default function Home() {
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
             <Image
               src={mainlogo}
-              alt="Mainlogo"
+              alt="Main logo"
               fill
               style={{
                 objectFit: 'cover',
