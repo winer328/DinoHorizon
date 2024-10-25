@@ -1,6 +1,6 @@
 'use client'
 
-import { main_character } from '@/images';
+import { main_button } from '@/images';
 import Image from 'next/image';
 import Link from 'next/link';
 
