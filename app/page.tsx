@@ -12,7 +12,7 @@ export default function Home() {
         <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
             <Image
-              src={dino_logo}
+              src={dino-logo}
               alt="dino logo"
               fill
               style={{
