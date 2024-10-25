@@ -7,7 +7,7 @@ import Link from 'next/link';
 // Home component: Main landing page of the application
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-b from-[#575EFF] via-[#1a1a1a] to-[#0ECBFF]">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-b from-[#575EFF] to-[#0ECBFF]">
       <div className="w-full max-w-xl text-white flex flex-col items-center ">
         <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
