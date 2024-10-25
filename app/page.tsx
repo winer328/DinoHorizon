@@ -1,6 +1,6 @@
 'use client'
 
-import { main_character } from '@/images';
+import { dino_logo } from '@/images';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,8 +12,8 @@ export default function Home() {
         <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
             <Image
-              src={main_character}
-              alt="Main Character"
+              src={dino_logo}
+              alt="dino logo"
               fill
               style={{
                 objectFit: 'cover',
