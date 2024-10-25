@@ -1,6 +1,6 @@
 'use client'
 
-import { main_chraracter } from '@/images';
+import { main_character } from '@/images';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,8 +12,8 @@ export default function Home() {
         <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
           <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
             <Image
-              src={main_chraracter}
-              alt="Main Chraracter"
+              src={main_character}
+              alt="Main Character"
               fill
               style={{
                 objectFit: 'cover',
