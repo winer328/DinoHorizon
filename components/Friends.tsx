@@ -106,7 +106,7 @@ export default function Friends() {
             <div className="px-4 pt-1 pb-24">
               <div className="relative">
                 <h1 className="text-2xl text-center mt-4 mb-2 text-[#7C1C1C] font-bold">Invite Friends !</h1>
-                <p className="text-center text-gray-400 mb-8">You and your friend will receive DINO coins!!!</p>
+                <p className="text-center text-gray-400 mb-8">You and your friend will receive DINOH coins!!!</p>
 
                 <div className="space-y-2">
                   <div className="flex justify-between items-center bg-gradient-to-r from-red-900 rounded-lg p-4">
@@ -145,7 +145,7 @@ export default function Friends() {
 
                 {showBonusesList && (
                   <div className="mt-4 space-y-2">
-                    <h3 className="text-2xl text-[#7C1C1C] text-left font-bold mb-4">Bonus for leveling up</h3>
+                    <h3 className="text-2xl text-[#7C1C1C] text-left font-bold mb-4">Bonus for levelling up</h3>
                     <div className="flex justify-between text-gray-400 px-4 mb-2">
                       <div className="flex items-center flex-1">
                         <span>Level</span>

@@ -93,7 +93,7 @@ export default function Mine() {
 
               <div className="bg-gradient-to-r from-red-900 to-neutral-900 rounded-lg p-4 mt-6">
                 <div className="flex justify-between items-center mb-4">
-                  <p>Current profit per hour:</p>
+                  <p>Current Dinoh per hour:</p>
                   <p className="text-[#D62024]">
                     {formatNumber(profitPerHour)}
                   </p>
@@ -103,7 +103,7 @@ export default function Mine() {
                   <p className="text-[#D62024]">{formatNumber(upgradeCost)}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p>profit per hour increase:</p>
+                  <p>Dinoh per hour increase:</p>
                   <p className="text-[#D62024]">
                     +{formatNumber(upgradeIncrease)}
                   </p>
@@ -131,7 +131,7 @@ export default function Mine() {
               <div className="bg-[#280101] rounded-lg p-4 mt-6 flex items-center justify-between">
                 <Info className="w-6 h-6 text-[#D62024] mr-3 flex-shrink-0 mt-1" />
                 <p className="text-sm text-gray-300 items-center text-center">
-                  Your mine will continue to produce coins for up to<span className="text-[#D62125] font-bold"> 
+                  Your mine will continue to produce Dinoh coins for up to<span className="text-[#D62125] font-bold"> 
                   {" "}{maxInactiveHours} hours
                   </span>
                   {" "}after your last interaction. Remember to check in often to

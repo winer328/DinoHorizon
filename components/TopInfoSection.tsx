@@ -43,7 +43,7 @@ export default function TopInfoSection() {
                     </div>
                     <div className="h-[32px] w-[2px] bg-[#D62024] mx-2"></div>
                     <div className="flex-1 text-center">
-                        <p className="text-xs text-black font-medium whitespace-nowrap overflow-hidden text-ellipsis">DINO per hour</p>
+                        <p className="text-xs text-black font-medium whitespace-nowrap overflow-hidden text-ellipsis">DINOH per hour</p>
                         <div className="flex items-center justify-center space-x-1">
                             <p className="text-sm text-black">+{formatNumber(profitPerHour)}</p>
                         </div>
