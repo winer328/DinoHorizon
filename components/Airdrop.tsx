@@ -154,7 +154,7 @@ export default function Airdrop() {
                                     <Image src={avatar} alt="owl Token" width={96} height={96} className="rounded-lg mr-2" />
                                 </div>
                                 <h1 className="text-2xl text-center mb-4 text-[#791B1B]">Airdrop</h1>
-                                <p className="text-gray-500 text-center mb-4 font-normal">There is a list of challenges below. Complete them to qualify for the DINO Airdrop.</p>
+                                <p className="text-gray-500 text-center mb-4 font-normal">There is a list of challenges below. Complete them to qualify for the DINOH Airdrop.</p>
                                 <h2 className="text-[#791B1B] text-lg mt-8 mb-4">Wallet</h2>
 
                                 {isLoading ? (
