@@ -1,32 +1,40 @@
-'use client'
+'use client';
 
-import { main_character } from '@/images';
-import Image from 'next/image';
 import Link from 'next/link';
 
-// Home component: Main landing page of the application
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-screen bg-[#000000] ">
-      <div className="w-full max-w-xl text-white flex flex-col items-center ">
-        <div className="w-64 h-64 rounded-full circle-outer p-2 mb-8">
-          <div className="w-full h-full rounded-full circle-inner overflow-hidden relative">
-            <Image
-              src={main_character}
-              alt="Main Character"
-              fill
+    <>
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+      `}</style>
+
+      <div
+        className="flex flex-col items-center h-screen bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')`,
+          backgroundSize: 'contain', // Ensures the image fits within the screen width
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Transparent Text Section */}
+        <div className="flex flex-col items-center w-full text-white mt-auto mb-10 bg-opacity-75">
+          <p className="text-3xl mb-2 shadow-lg">
+            <Link
+              href="/clicker"
+              className="text-4xl font-bold text-transparent bg-clip-text relative hover"
               style={{
-                objectFit: 'cover',
-                objectPosition: 'center',
-                transform: 'scale(1.05) translateY(10%)'
+                fontFamily: 'ZCOOL KuaiLe, sans-serif',
+                backgroundImage: 'linear-gradient(90deg, #FFFFFF, #0ECBFF)',
               }}
-            />
-          </div>
+            >
+              START
+              <span className="absolute inset-0 bg-white opacity-30 blur-md" />
+            </Link>
+          </p>
         </div>
-        
-        <h1 className="text-3xl font-bold mb-4 Dark_owl">Dino Horizon</h1>
-        <p className="text-xl mb-2"> <Link href="/clicker" className="neon">Start Game</Link></p>        
       </div>
-    </div>
+    </>
   );
 }
