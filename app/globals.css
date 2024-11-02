@@ -28,7 +28,7 @@ html, body {
 }
 
 .top-glow {
-  box-shadow: 0 -26px 20px #33B4F2;
+  box-shadow: 0 0px 0px #00000000;
 }
 
 /* Define the keyframes for the blinking animation */
