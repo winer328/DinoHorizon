@@ -101,8 +101,11 @@ export default function Friends() {
   return (
     <div className="bg-black flex justify-center min-h-screen">
       <div className="w-full bg-black text-gray-400 font-bold flex flex-col max-w-xl">
-        <div className="flex-grow mt-4 bg-[#D62125] rounded-t-[48px] relative top-glow z-0">
-          <div className="mt-[2px] bg-[#000000] rounded-t-[46px] h-full overflow-y-auto no-scrollbar">
+        <div className="flex-grow mt-4 rounded-t-[48px] relative top-glow z-0">
+          <div 
+            className="mt-[2px] rounded-t-[46px] h-full overflow-y-auto no-scrollbar"
+            style={{ background: 'linear-gradient(to bottom, #575EFF, rgba(14, 203, 255, 0.94))' }}
+          >
             <div className="px-4 pt-1 pb-24">
               <div className="relative">
                 <h1 className="text-2xl text-center mt-4 mb-2 text-[#7C1C1C] font-bold">Invite Friends !</h1>
