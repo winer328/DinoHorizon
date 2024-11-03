@@ -49,30 +49,37 @@ export default function Navigation({ currentView, setCurrentView }: NavigationPr
     }
 
     return (
-        <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] w-full max-w-xl bg-[#17307B] flex justify-around items-center z-40 text-xs border-t border-[#D62024] max-h-24">
-            {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => handleViewChange(item.view)}
-                  className="flex-1"
-                >
-                    <div className={`flex flex-col items-center justify-center ${currentView === item.view ? 'text-black bg-[#1E90FF]' : 'text-[#ffffff]'} h-16 m-1 p-2 rounded-md`}>
-                        <div className="w-8 h-8 relative">
-                            {item.image && (
-                                <div className="w-full h-full relative">
+        <div>
+            <style>
+                {`
+                    @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+                `}
+            </style>
+            <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] w-full max-w-xl bg-[#17307B] flex justify-around items-center z-40 text-xs border-t border-[#D62024] max-h-24">
+                {navItems.map((item) => (
+                    <button
+                        key={item.name}
+                        onClick={() => handleViewChange(item.view)}
+                        className="flex-1"
+                    >
+                        <div className={`flex flex-col items-center justify-center ${currentView === item.view ? 'text-black bg-[#1E90FF]' : 'text-[#ffffff]'} h-16 m-1 p-2 rounded-md`}>
+                            <div className="w-8 h-8 relative">
+                                {item.image && (
                                     <Image
                                         src={item.image}
                                         alt={item.name}
                                         width={32}
                                         height={32}
                                     />
-                                </div>
-                            )}
+                                )}
+                            </div>
+                            <p className="mt-1" style={{ fontFamily: 'ZCOOL KuaiLe, sans-serif' }}>
+                                {item.name}
+                            </p>
                         </div>
-                        <p className="mt-1">{item.name}</p>
-                    </div>
-                </button>
-            ))}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 }
