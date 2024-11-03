@@ -72,7 +72,7 @@ export default function Earn() {
                 <div className="flex justify-center mb-4">
                 <Image src={avatar} alt="avatar" width={100} height={100} />
                 </div>
-                <h1 className="text-4xl text-center mb-4 text-[#fffff]">Earn More coins</h1>
+                <h1 className="text-3xl text-center mb-4 text-[#fffff]">Earn More DINOH</h1>
 
                 {isLoading ? (
                   <div className="text-center text-[#fffff]">Loading tasks...</div>
