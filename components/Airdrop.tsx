@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useState, useEffect, useCallback } from 'react';
@@ -145,17 +144,18 @@ export default function Airdrop() {
 
     return (
         <div className="bg-black flex justify-center min-h-screen">
-        <div className="w-full bg-black text-white font-bold flex flex-col max-w-xl">
-          <div className="flex-grow mt-4 bg-[#D62125] rounded-t-[48px] relative top-glow z-0">
-            <div className="mt-[2px] bg-[#000000] rounded-t-[46px] h-full overflow-y-auto no-scrollbar">
-              <div className="px-4 pt-1 pb-24">
+            <div className="w-full bg-black text-white font-bold flex flex-col max-w-xl">
+                {/* Inner Gradient Container */}
+                <div className="flex-grow mt-4 rounded-t-[48px] relative top-glow z-0 overflow-hidden">
+                    <div className="bg-gradient-to-b from-[#575EFF] to-[#0ECBFF] rounded-t-[46px] h-full">
+                        <div className="px-4 pt-1 pb-24">
                             <div className="relative mt-4">
                                 <div className="flex justify-center mb-4">
                                     <Image src={avatar} alt="owl Token" width={96} height={96} className="rounded-lg mr-2" />
                                 </div>
-                                <h1 className="text-2xl text-center mb-4 text-[#791B1B]">Airdrop</h1>
-                                <p className="text-gray-500 text-center mb-4 font-normal">There is a list of challenges below. Complete them to qualify for the DINOH Airdrop.</p>
-                                <h2 className="text-[#791B1B] text-lg mt-8 mb-4">Wallet</h2>
+                                <h1 className="text-4xl text-center mb-4 text-[#fffff]">Airdrop</h1>
+                                <p className="text-white-500 text-center mb-4 font-normal">There is a list of challenges below. Complete them to qualify for the DINOH Airdrop.</p>
+                                <h2 className="text-[#fffff] text-lg mt-8 mb-4">Wallet</h2>
 
                                 {isLoading ? (
                                     <div className="flex justify-between items-center bg-gradient-to-r from-red-900 rounded-lg p-4 w-full">
@@ -176,10 +176,10 @@ export default function Airdrop() {
                                         <div className="flex items-center">
                                             <Image src={TON} alt="Ton wallet" width={40} height={40} className="rounded-lg mr-2" />
                                             <div className="flex flex-col">
-                                                <span className="font-bold text-lg text-[#791B1B]" >Connect your TON wallet</span>
+                                                <span className="font-bold text-lg text-[#fffff]">Connect your TON wallet</span>
                                             </div>
                                         </div>
-                                        <Angle size={42} className="text-[#791B1B]" />
+                                        <Angle size={42} className="text-[#fffff]" />
                                     </button>
                                 ) : (
                                     <div className="flex gap-2">
@@ -206,23 +206,23 @@ export default function Airdrop() {
                                         </button>
                                     </div>
                                 )}
-                                <h2 className="text-[#791B1B] text-lg font-bold mt-8 mb-4">Tasks</h2>
+                                <h2 className="text-[#fffff] text-lg font-bold mt-8 mb-4">Tasks</h2>
                                 <div className="space-y-2">
                                     <button 
-                                    className="w-full flex justify-between items-center bg-gradient-to-r from-red-900  rounded-lg p-4"
-                                    onClick={handlePaidTaskClicked}
+                                        className="w-full flex justify-between items-center bg-gradient-to-r from-red-900 rounded-lg p-4"
+                                        onClick={handlePaidTaskClicked}
                                     >
                                         <div className="flex items-center">
                                             <Image src={owl_coins} alt="Task Image" width={40} height={40} className="rounded-lg mr-2" />
                                             <div className="flex flex-col">
-                                                <span className="text-lg text-gray-500 font-bold ">Ice Age Advancement</span>
+                                                <span className="text-lg text-white-500 font-bold">Ice Age Advancement</span>
                                                 <div className="flex items-center">
-                                                <Image src={avatar} alt="Task Image" width={25} height={25} className="rounded-lg mr-2" />
-                                                    <span className="text-lg text-gray-500 font-bold ">+500K</span>
+                                                    <Image src={avatar} alt="Task Image" width={25} height={25} className="rounded-lg mr-2" />
+                                                    <span className="text-lg text-white-500 font-bold">+500K</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p className="text-[#791B1B] font-bold text-2xl"> 0.5 TON</p>
+                                        <p className="text-[#fffff] font-bold text-2xl">0.5 TON</p>
                                     </button>
                                 </div>
                             </div>
