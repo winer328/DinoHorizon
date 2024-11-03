@@ -7,9 +7,7 @@ import {
   useGameStore,
 } from "@/utils/game-mechanics";
 import Image from "next/image";
-import {
-  MAXIMUM_INACTIVE_TIME_FOR_MINE,
-} from "@/utils/consts";
+import { MAXIMUM_INACTIVE_TIME_FOR_MINE } from "@/utils/consts";
 import { formatNumber } from "@/utils/ui";
 import { useToast } from "@/contexts/ToastContext";
 import Info from "@/icons/Info";
@@ -70,21 +68,23 @@ export default function Mine() {
   };
 
   return (
-    <div className="bg-black flex justify-center min-h-screen">
-      <div className="w-full bg-black text-[#D62125]font-bold flex flex-col max-w-xl">
-        <div className="flex-grow mt-4 bg-[#D62125] rounded-t-[48px] relative top-glow z-0">
-          <div className="mt-[2px] bg-[#000000] rounded-t-[46px] h-full overflow-y-auto no-scrollbar">
+    <div
+      className="flex justify-center min-h-screen"
+      style={{
+        background: "linear-gradient(to bottom, #575EFF, #0ECBFF 94%)",
+      }}
+    >
+      <div className="w-full text-[#D62125] font-bold flex flex-col max-w-xl">
+        <div className="flex-grow mt-4 rounded-t-[48px] relative top-glow z-0">
+          <div className="mt-[2px] rounded-t-[46px] h-full overflow-y-auto no-scrollbar bg-opacity-0">
             <div className="px-4 pt-1 pb-24">
-              <h1 className="text-2xl text-center mt-4 text-[#D62125] ">Upgrade</h1>
+              <h1 className="text-2xl text-center mt-4 text-[#D62125]">
+                Upgrade
+              </h1>
 
               <div className="px-4 mt-4 flex justify-center">
-                <div className="px-4 py-2 flex items-center space-x-2 space-x-2 bg-[#280101] opacity-80 rounded-full">
-                  <Image
-                    src={avatar}
-                    alt="Exchange"
-                    width={40}
-                    height={40}
-                  />
+                <div className="px-4 py-2 flex items-center space-x-2 bg-[#280101] opacity-80 rounded-full">
+                  <Image src={avatar} alt="Exchange" width={40} height={40} />
                   <p className="text-4xl text-[#D62125]" suppressHydrationWarning>
                     {Math.floor(pointsBalance).toLocaleString()}
                   </p>
@@ -94,9 +94,7 @@ export default function Mine() {
               <div className="bg-gradient-to-r from-red-900 to-neutral-900 rounded-lg p-4 mt-6">
                 <div className="flex justify-between items-center mb-4">
                   <p>Current Dinoh per hour:</p>
-                  <p className="text-[#D62024]">
-                    {formatNumber(profitPerHour)}
-                  </p>
+                  <p className="text-[#D62024]">{formatNumber(profitPerHour)}</p>
                 </div>
                 <div className="flex justify-between items-center mb-4">
                   <p>Upgrade cost:</p>
@@ -104,9 +102,7 @@ export default function Mine() {
                 </div>
                 <div className="flex justify-between items-center">
                   <p>Dinoh per hour increase:</p>
-                  <p className="text-[#D62024]">
-                    +{formatNumber(upgradeIncrease)}
-                  </p>
+                  <p className="text-[#D62024]">+{formatNumber(upgradeIncrease)}</p>
                 </div>
               </div>
 
@@ -131,11 +127,9 @@ export default function Mine() {
               <div className="bg-[#280101] rounded-lg p-4 mt-6 flex items-center justify-between">
                 <Info className="w-6 h-6 text-[#D62024] mr-3 flex-shrink-0 mt-1" />
                 <p className="text-sm text-gray-300 items-center text-center">
-                  Your mine will continue to produce Dinoh coins for up to<span className="text-[#D62125] font-bold"> 
-                  {" "}{maxInactiveHours} hours
-                  </span>
-                  {" "}after your last interaction. Remember to check in often to
-                  optimize your production!
+                  Your mine will continue to produce Dinoh coins for up to
+                  <span className="text-[#D62125] font-bold"> {maxInactiveHours} hours</span> after your last interaction. Remember to check in
+                  often to optimize your production!
                 </p>
               </div>
             </div>
