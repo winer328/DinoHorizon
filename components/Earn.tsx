@@ -61,18 +61,21 @@ export default function Earn() {
 
   return (
     <div className="bg-black flex justify-center min-h-screen">
-      <div className="w-full bg-black text-white font-bold flex flex-col max-w-xl">
-        <div className="flex-grow mt-4 bg-[#D62125] rounded-t-[48px] relative top-glow z-0">
-          <div className="mt-[2px] bg-[#000000] rounded-t-[46px] h-full overflow-y-auto no-scrollbar">
+      <div className="w-full bg-black text-gray-400 font-bold flex flex-col max-w-xl">
+        <div className="flex-grow mt-4 rounded-t-[48px] relative top-glow z-0">
+          <div 
+            className="mt-[2px] rounded-t-[46px] h-full overflow-y-auto no-scrollbar"
+            style={{ background: 'linear-gradient(to bottom, #575EFF, rgba(14, 203, 255, 0.94))' }}
+          >
             <div className="px-4 pt-1 pb-24">
-              <div className="relative mt-4">
+              <div className="relative">
                 <div className="flex justify-center mb-4">
                 <Image src={avatar} alt="avatar" width={100} height={100} />
                 </div>
-                <h1 className="text-2xl text-center mb-4 text-[#791B1B]">Earn More coins</h1>
+                <h1 className="text-4xl text-center mb-4 text-[#fffff]">Earn More coins</h1>
 
                 {isLoading ? (
-                  <div className="text-center text-[#791B1B]">Loading tasks...</div>
+                  <div className="text-center text-[#fffff]">Loading tasks...</div>
                 ) : (
                   Object.entries(groupedTasks).map(([category, categoryTasks]) => (
                     <div key={category}>
