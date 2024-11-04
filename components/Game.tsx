@@ -167,10 +167,13 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
   };
 
   return (
-    <div className="bg-black flex justify-center min-h-screen">
+    <div className="bg-black flex justify-center">
       <div className="w-full bg-black text-white h-screen font-bold flex flex-col max-w-xl ">
         <div className="flex-grow  relative top-glow z-0">
-          <div className="mt-[2px] bg-[url('../images/background_one.png')] bg-center h-full overflow-y-auto no-scrollbar bg-cover">
+          <div
+            className="mt-[2px] bg-[url('../images/background_one.png')] bg-center overflow-y-auto no-scrollbar bg-cover"
+            style={{ height: "calc(100vh - 24px)" }}
+          >
             <div className="mt-5 flex justify-between">
               <div className="ml-[24px] flex">
                 <div className="bg-[url('../images/UI-ProfileAvatar-Frame.png')] p-2 bg-cover">
@@ -213,7 +216,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
               </div>
             </div>
             <div className="px-4 pt-1 pb-24">
-              <div className="w-fit m-auto mt-20 px-2 flex justify-center h-12 bg-[#D744C9] select-none transition-all duration-150 [box-shadow:0_3px_0_0_#ac36a0] rounded-2xl  border-[2px] border-[#df69d4]">
+              <div className="w-fit m-auto mt-16 px-2 flex justify-center h-12 bg-[#D744C9] select-none transition-all duration-150 [box-shadow:0_3px_0_0_#ac36a0] rounded-2xl  border-[2px] border-[#df69d4]">
                 <Image
                   src={boost}
                   alt="coinstack"
@@ -227,7 +230,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
               <div className="flex justify-center"></div>
               <div className="px-4 mt-20 flex justify-center  bg-center bg-no-repeat bg-cover ">
                 <div
-                  className="w-full h-[480px] p-4"
+                  className="  p-4"
                   onClick={handleInteraction}
                   onTouchEnd={handleInteraction}
                 >
@@ -235,17 +238,12 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
                     <Image
                       src={LEVELS[gameLevelIndex].bigImage}
                       alt="Main Character"
-                      fill
-                      style={{
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        transform: "scale(1.05) translateY(10%)",
-                      }}
+                      className="h-[30vh] w-auto object-cover"
                     />
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-8 mt-[120px]">
+              <div className="grid grid-cols-8 mt-[20%]">
                 <div className="col-span-6 flex items-center relative">
                   <Image
                     className="w-[95%] !h-6 absolute right-0"
@@ -283,7 +281,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
               </div>
             </div>
           </div>
-          <div className="absolute top-[300px] left-3 p-2 rounded-xl bg-black bg-opacity-20">
+          <div className="absolute top-[30%] left-3 p-2 rounded-xl bg-black bg-opacity-20">
             <div>
               <Image
                 src={coin_box}
@@ -308,7 +306,7 @@ export default function Game({ currentView, setCurrentView }: GameProps) {
               </Link>
             </div>
           </div>
-          <div className="absolute top-[300px] right-3 p-2 rounded-xl bg-black bg-opacity-20">
+          <div className="absolute top-[30%] right-3 p-2 rounded-xl bg-black bg-opacity-20">
             <div>
               <div
                 className="relative cursor-pointer active:scale-95 transition transform duration-150"
