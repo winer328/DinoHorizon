@@ -13,12 +13,12 @@ export default function GameBanners() {
     },
     {
       title: "Play and Win a ps5",
-      buttonText: "Explore Now",
+      buttonText: "Invite",
       backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
     },
     {
       title: "CHALLENGE YOUR FRIENDS",
-      buttonText: "Get Started",
+      buttonText: "Explore",
       backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
     },
   ];
@@ -170,7 +170,7 @@ export default function GameBanners() {
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "flex-start",
-          color: "#000",
+          color: "#fff",
         }}
       >
         {/* Static Content for Lower Banner */}
