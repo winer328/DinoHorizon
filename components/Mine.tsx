@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 export default function GameBanners() {
@@ -32,13 +31,11 @@ export default function GameBanners() {
 
   return (
     <div
-      className="flex flex-col items-center min-h-screen justify-center"
+      className="flex flex-col items-center min-h-screen"
       style={{
         background: "linear-gradient(to bottom, #575EFF, #0ECBFF 94%)",
         fontFamily: "'ZCOOL KuaiLe', sans-serif",
-        padding: "1rem",
-        position: "relative",
-        top: "-30px",
+        padding: "2vw",
       }}
     >
       {/* Header */}
@@ -46,18 +43,18 @@ export default function GameBanners() {
         className="flex items-center justify-center"
         style={{
           width: "100%",
-          padding: "1rem",
-          fontFamily: "'ZCOOL KuaiLe', sans-serif",
+          padding: "2vw",
+          textAlign: "center",
         }}
       >
         <img
           src="https://raw.githubusercontent.com/thedefidude18/dinohorizon/main/images/dinomario.svg"
           alt="Dino Horizon Logo"
-          style={{ width: "50px", height: "50px", marginRight: "1rem" }}
+          style={{ width: "12vw", height: "12vw", marginRight: "2vw" }}
         />
         <h1
           style={{
-            fontSize: "24px",
+            fontSize: "6vw",
             fontWeight: "bold",
             margin: 0,
             color: "#ffffff",
@@ -71,20 +68,21 @@ export default function GameBanners() {
       {/* Upper Banner with Slider */}
       <div
         style={{
-          width: "405px",
-          height: "310px",
+          width: "92vw",
+          height: "46vh",
           backgroundImage: slides[currentSlide].backgroundImage,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          borderRadius: "15px",
+          borderRadius: "5vw",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "flex-start",
           color: "#ffffff",
           position: "relative",
-          marginBottom: "0.5rem",
+          marginBottom: "1vh", // Reduced space between banners
+          padding: "4vw",
         }}
       >
         {/* Overlay for Title and Button */}
@@ -92,19 +90,15 @@ export default function GameBanners() {
           style={{
             background: "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
             width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            borderRadius: "15px",
-            padding: "10px",
+            borderRadius: "5vw",
+            padding: "3vw",
           }}
         >
           <h2
             style={{
-              fontSize: "20px",
+              fontSize: "5vw",
               fontWeight: "bold",
-              margin: "0 0 10px 20px",
+              margin: "0 0 2vw 2vw",
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
@@ -113,14 +107,14 @@ export default function GameBanners() {
           <button
             onClick={() => setButtonText("Loading...")}
             style={{
-              padding: "8px 16px",
+              padding: "2vw 5vw",
               background: "linear-gradient(to bottom, #FCD113, #F6BA06)",
               color: "#ffffff",
-              borderRadius: "12px",
-              fontSize: "19px",
+              borderRadius: "2vw",
+              fontSize: "4vw",
               fontWeight: "bold",
               border: "none",
-              marginLeft: "20px",
+              marginLeft: "2vw",
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
@@ -132,11 +126,11 @@ export default function GameBanners() {
         <div
           style={{
             position: "absolute",
-            bottom: "10px",
+            bottom: "2vw",
             left: "50%",
             transform: "translateX(-50%)",
             display: "flex",
-            gap: "8px",
+            gap: "2vw",
           }}
         >
           {slides.map((_, index) => (
@@ -144,8 +138,8 @@ export default function GameBanners() {
               key={index}
               onClick={() => setCurrentSlide(index)} // Allow clicking dots to change slide
               style={{
-                width: index === currentSlide ? "12px" : "8px",
-                height: index === currentSlide ? "12px" : "8px",
+                width: index === currentSlide ? "3vw" : "2vw",
+                height: index === currentSlide ? "3vw" : "2vw",
                 backgroundColor: index === currentSlide ? "#ffffff" : "#cccccc",
                 borderRadius: "50%",
                 transition: "width 0.3s, height 0.3s, background-color 0.3s",
@@ -159,18 +153,20 @@ export default function GameBanners() {
       {/* Lower Banner */}
       <div
         style={{
-          width: "405px",
-          height: "240px",
+          width: "92vw",
+          height: "32vh",
           backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          borderRadius: "15px",
+          borderRadius: "5vw",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "flex-start",
           color: "#fff",
+          padding: "4vw",
+          marginTop: "1vh", // Reduced space between banners
         }}
       >
         {/* Static Content for Lower Banner */}
@@ -178,19 +174,15 @@ export default function GameBanners() {
           style={{
             background: "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
             width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            alignItems: "flex-start",
-            borderRadius: "15px",
-            padding: "5px",
+            borderRadius: "5vw",
+            padding: "3vw",
           }}
         >
           <h2
             style={{
-              fontSize: "20px",
+              fontSize: "5vw",
               fontWeight: "bold",
-              margin: "0 0 5px 20px",
+              margin: "0 0 1vw 2vw",
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
@@ -198,14 +190,14 @@ export default function GameBanners() {
           </h2>
           <button
             style={{
-              padding: "8px 16px",
+              padding: "2vw 5vw",
               background: "linear-gradient(to bottom, #FCD113, #F6BA06)",
               color: "#ffffff",
-              borderRadius: "12px",
-              fontSize: "16px",
+              borderRadius: "2vw",
+              fontSize: "4vw",
               fontWeight: "bold",
               border: "none",
-              marginLeft: "20px",
+              marginLeft: "2vw",
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
