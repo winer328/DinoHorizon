@@ -109,7 +109,7 @@ export default function Mine() {
               padding: '16px',
               marginTop: '24px',
               overflow: 'hidden',
-            }}>
+            }} className="max-w-[400px] w-full">
               <svg xmlns="http://www.w3.org/2000/svg" width="402" height="112" viewBox="0 0 402 112" style={{
                 position: 'absolute',
                 top: '0',
@@ -137,7 +137,7 @@ export default function Mine() {
             <button
               onClick={handleUpgrade}
               disabled={pointsBalance < upgradeCost || isLoading}
-              className="w-full mt-6 py-2.5 px-4 rounded-lg text-lg border-2 transition-all duration-300"
+              className="w-full mt-6 py-2.5 px-4 rounded-lg text-lg border-2 transition-all duration-300 max-w-[400px]"
               style={{
                 fontFamily: "'ZCOOL KuaiLe', sans-serif",
                 background: pointsBalance >= upgradeCost && !isLoading
@@ -155,7 +155,7 @@ export default function Mine() {
             </button>
 
             {/* Info Section */}
-            <div className="relative p-4 mt-6 flex items-center justify-between" style={{ width: '402px', height: '112px', zIndex: 10 }}>
+            <div className="relative p-4 mt-6 flex items-center justify-between max-w-[400px] w-full" style={{ height: '112px', zIndex: 10 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="402" height="112" viewBox="0 0 402 112" fill="none" className="absolute inset-0">
                 <rect x="1" y="1" width="400" height="110" rx="19" fill="#AC36A0"/>
                 <path d="M1 20C1 9.50659 9.50659 1 20 1H382C392.493 1 401 9.50659 401 20V89C401 99.4934 392.493 108 382 108H20C9.5066 108 1 99.4934 1 89V20Z" fill="white"/>
@@ -176,4 +176,3 @@ export default function Mine() {
     </div>
   );
 }
-
