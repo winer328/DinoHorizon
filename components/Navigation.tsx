@@ -10,9 +10,9 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-    { name: 'Mine', image: mine_nav, view: 'mine' },
+    { name: 'Home', image: mine_nav, view: 'mine' },
     { name: 'Friends', image: friends_nav, view: 'friends' },
-    { name: 'Tap', image: main_button, view: 'game' },
+    { name: 'Tappy', image: main_button, view: 'game' },
     { name: 'Tasks', image: earn_nav, view: 'earn' },
     { name: 'Rewards', image: avatar, view: 'airdrop' },
 ];
