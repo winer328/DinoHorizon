@@ -1,175 +1,124 @@
-"use client";
-import { useEffect, useState } from "react";
-import {
-calculateMineUpgradeCost,
-calculateProfitPerHour,
-useGameStore,
-} from "@/utils/game-mechanics";
-import Image from "next/image";
-import { MAXIMUM_INACTIVE_TIME_FOR_MINE } from "@/utils/consts";
-import { formatNumber } from "@/utils/ui";
-import { useToast } from "@/contexts/ToastContext";
-import Info from "@/icons/Info";
-import { avatar } from "@/images";
-export default function Mine() {
-const showToast = useToast();
-const {
-userTelegramInitData,
-pointsBalance,
-profitPerHour,
-mineLevelIndex,
-upgradeMineLevelIndex,
-} = useGameStore();
-const [isLoading, setIsLoading] = useState(false);
-useEffect(() => {
-const link = document.createElement("link");
-link.href = "https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap";
-link.rel = "stylesheet";
-document.head.appendChild(link);
-return () => {
-document.head.removeChild(link);
-};
-}, []);
-const upgradeCost = calculateMineUpgradeCost(mineLevelIndex);
-const upgradeIncrease =
-calculateProfitPerHour(mineLevelIndex + 1) - calculateProfitPerHour(mineLevelIndex);
-const maxInactiveHours = MAXIMUM_INACTIVE_TIME_FOR_MINE / (60 * 60 * 1000);
-const handleUpgrade = async () => {
-if (pointsBalance >= upgradeCost && !isLoading) {
-setIsLoading(true);
-try {
-const response = await fetch("/api/upgrade/mine", {
-method: "POST",
-headers: {
-"Content-Type": "application/json",
-},
-body: JSON.stringify({
-initData: userTelegramInitData,
-}),
-});
-if (!response.ok) throw new Error("Failed to upgrade mine");
-const result = await response.json();
-console.log("Result from server:", result);
-upgradeMineLevelIndex();
-showToast("Mine Upgrade Successful!", "success");
-} catch (error) {
-console.error("Error upgrading mine:", error);
-showToast("Failed to upgrade mine. Please try again.", "error");
-} finally {
-setIsLoading(false);
+'use client';
+
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { calculateEnergyLimit, InitialGameState, useGameStore } from '@/utils/game-mechanics';
+import UAParser from 'ua-parser-js';
+import { ALLOW_ALL_DEVICES } from '@/utils/consts';
+
+interface LoadingProps {
+  setIsInitialized: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentView: (view: string) => void;
 }
-}
-};
-return (
-<div
-className="flex justify-center min-h-screen"
-style={{
-background: "linear-gradient(to bottom, #575EFF, #0ECBFF 94%)",
-fontFamily: "'ZCOOL KuaiLe', sans-serif",
-paddingBottom: '2rem' // Add padding to prevent clipping
-}}
->
-<div className="w-full text-[#150707] font-bold flex flex-col max-w-xl">
-   <div className="flex-grow mt-4 rounded-t-[48px] relative top-glow z-0 overflow-y-auto no-scrollbar">
-      <div className="mt-[2px] rounded-t-[46px] h-full bg-opacity-0 px-4 pt-1 pb-24">
-         <h1
-         style={{
-         fontFamily: "'ZCOOL KuaiLe', sans-serif",
-         fontSize: '1.5rem',
-         textAlign: 'center',
-         marginTop: '1rem',
-         color: '#ffffff',
-         }}
-         >
-         Upgrade
-         </h1>
-         <div className="px-4 mt-4 flex justify-center">
-            <div className="px-4 py-2 flex items-center space-x-2 bg-[#ff47f3] opacity-80 rounded-full">
-               <Image src={avatar} alt="Exchange" width={40} height={40} />
-               <p className="text-4xl text-[#ffffff]" suppressHydrationWarning>
-                  {Math.floor(pointsBalance).toLocaleString()}
-               </p>
-            </div>
-         </div>
-         <div style={{
-         position: 'relative',
-         borderRadius: '25px',
-         padding: '16px',
-         marginTop: '24px',
-         overflow: 'hidden',
-         }} className="max-w-[400px] w-full">
-         <svg xmlns="http://www.w3.org/2000/svg" width="402" height="112" viewBox="0 0 402 112" style={{
-         position: 'absolute',
-         top: '0',
-         left: '0',
-         zIndex: '-1',
-         }}>
-         <rect x="1" y="1" width="400" height="110" rx="19" fill="#AC36A0"/>
-         <path d="M1 20C1 9.50659 9.50659 1 20 1H382C392.493 1 401 9.50659 401 20V89C401 99.4934 392.493 108 382 108H20C9.5066 108 1 99.4934 1 89V20Z" fill="white"/>
-         </svg>
-         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-         <p>Current Dinoh per hour:</p>
-         <p style={{ color: '#D62024' }}>{formatNumber(profitPerHour)}</p>
+
+export default function Loading({ setIsInitialized, setCurrentView }: LoadingProps) {
+  const initializeState = useGameStore((state) => state.initializeState);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const openTimestampRef = useRef(Date.now());
+  const [isAppropriateDevice, setIsAppropriateDevice] = useState(true);
+  const [loadingPercentage, setLoadingPercentage] = useState(0);
+
+  const fetchOrCreateUser = useCallback(async () => {
+    try {
+      const initialState: InitialGameState = {
+        userTelegramInitData: '',
+        userTelegramName: 'Unknown User',
+        lastClickTimestamp: Date.now(),
+        gameLevelIndex: 0,
+        points: 0,
+        pointsBalance: 0,
+        unsynchronizedPoints: 0,
+        multitapLevelIndex: 0,
+        pointsPerClick: 0,
+        energy: 0,
+        maxEnergy: calculateEnergyLimit(0),
+        energyRefillsLeft: 0,
+        energyLimitLevelIndex: 0,
+        lastEnergyRefillTimestamp: Date.now(),
+        mineLevelIndex: 0,
+        profitPerHour: 0,
+        tonWalletAddress: '',
+      };
+
+      initializeState(initialState);
+      setIsDataLoaded(true);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }, [initializeState]);
+
+  useEffect(() => {
+    const parser = new UAParser();
+    const device = parser.getDevice();
+    setIsAppropriateDevice(ALLOW_ALL_DEVICES || device.type === 'mobile' || device.type === 'tablet');
+
+    if (isAppropriateDevice) fetchOrCreateUser();
+  }, []);
+
+  useEffect(() => {
+    const loadingInterval = setInterval(() => {
+      setLoadingPercentage((prev) => (prev < 100 ? prev + 1 : 100));
+    }, 100);
+
+    if (loadingPercentage === 100) {
+      clearInterval(loadingInterval);
+      const timer = setTimeout(() => {
+        setCurrentView('game');
+        setIsInitialized(true);
+      }, 100); // Delay before transitioning to the game
+
+      return () => clearTimeout(timer);
+    }
+
+    return () => clearInterval(loadingInterval);
+  }, [loadingPercentage, setCurrentView, setIsInitialized]);
+
+  if (!isAppropriateDevice) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-gradient-to-b from-[#20ff45] to-[#0ECBFF]">
+        <div className="w-full max-w-xl text-white flex flex-col items-center">
+          <h1 className="text-2xl font-bold mb-4">Play on your mobile</h1>
+          <p className="mt-4">@{process.env.NEXT_PUBLIC_BOT_USERNAME}</p>
+        </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-      <p>Upgrade cost:</p>
-      <p style={{ color: '#D62024' }}>{formatNumber(upgradeCost)}</p>
-   </div>
-   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-   <p>Dinoh per hour increase:</p>
-   <p style={{ color: '#D62024' }}>+{formatNumber(upgradeIncrease)}</p>
-</div>
-</div>
-<button
-onClick={handleUpgrade}
-disabled={pointsBalance < upgradeCost || isLoading}
-className="w-full mt-6 py-2.5 px-4 rounded-lg text-lg border-2 transition-all duration-300 max-w-[400px]"
-style={{
-fontFamily: "'ZCOOL KuaiLe', sans-serif",
-background: pointsBalance >= upgradeCost && !isLoading
-? "linear-gradient(to bottom, #FCD113, #F6BA06)"
-: "linear-gradient(to bottom, #FCD113, #F6BA06)",
-color: pointsBalance >= upgradeCost && !isLoading ? "#ffff" : "gray",
-border: pointsBalance >= upgradeCost && !isLoading ? "2px solid #FCD113" : "2px solid gray",
-}}
->
-{isLoading ? (
-<div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto" />
-   ) : (
-   "UPGRADE"
-   )}
-   </button>
-   {/* Info Section */}
-   <div 
-   className="relative p-4 mt-6 flex items-center justify-between w-full" 
-   style={{
-   maxWidth: '100%',  // Matches the button’s width constraint
-   height: '112px', 
-   zIndex: 10 
-   }}
-   >
-   <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="402" 
-      height="112" 
-      viewBox="0 0 402 112" 
-      fill="none" 
-      className="absolute inset-0"
-      >
-      <rect x="1" y="1" width="400" height="110" rx="19" fill="#AC36A0"/>
-      <path d="M1 20C1 9.50659 9.50659 1 20 1H382C392.493 1 401 9.50659 401 20V89C401 99.4934 392.493 108 382 108H20C9.5066 108 1 99.4934 1 89V20Z" fill="white"/>
-   </svg>
-   <div className="relative z-10 flex items-center justify-between w-full px-4">
-      <Info className="w-6 h-6 text-[#35abff] mr-3 flex-shrink-0 mt-1" />
-      <p className="text-sm text-[#000] text-center">
-         Your mine will continue to produce Dinoh coins for up to
-         <span className="text-[#000] font-bold"> {maxInactiveHours} hours</span> after your last play. Check in often to optimize your production!
-      </p>
-   </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-);
+    );
+  }
+
+  return (
+    <div
+      className="relative flex flex-col justify-center items-center h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* Loading Bar */}
+      <div className="relative w-4/5 h-6 bg-gray-600 rounded-full overflow-hidden shadow-lg mb-10" style={{ marginTop: 'auto' }}>
+        <div
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-yellow-500 to-blue-600 transition-all ease-linear"
+          style={{
+            width: `${loadingPercentage}%`,
+          }}
+        />
+        {/* Loading Percentage */}
+        <div
+          className="absolute top-0 left-0 h-full flex items-center justify-center text-white font-bold"
+          style={{
+            width: '100%',
+          }}
+        >
+          {loadingPercentage}%
+        </div>
+      </div>
+
+      {/* Styling for retro text (not used anymore but left for future reference) */}
+      <style jsx>{`
+        .retro-text {
+          font-family: 'Press Start 2P', cursive;
+          color: #ffeb3b;
+          text-shadow: 2px 2px 0px #f57f17;
+        }
+      `}</style>
+    </div>
+  );
 }
