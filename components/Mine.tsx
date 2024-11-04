@@ -7,11 +7,11 @@ export default function GameBanners() {
   const slides = [
     {
       title: "RUN, JUMP & EARN DINO",
-      buttonText: "Coming Soon",
+      buttonText: "Tap now 🦕",
       backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
     },
     {
-      title: "DISCOVER NEW WORLDS",
+      title: "Play and Win a ps5",
       buttonText: "Explore Now",
       backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
     },
@@ -63,7 +63,7 @@ export default function GameBanners() {
             fontFamily: "'ZCOOL KuaiLe', sans-serif",
           }}
         >
-          Welcome Dino Horizon
+          Welcome Dino Horizon.
         </h1>
       </div>
 
@@ -193,7 +193,7 @@ export default function GameBanners() {
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
-            TAP AND COLLECT DINO
+            Jump over obstacles.
           </h2>
           <button
             style={{
