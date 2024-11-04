@@ -1,7 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function GameBanners() {
   const [buttonText, setButtonText] = useState("Tap now!");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      title: "RUN, JUMP & EARN DINO",
+      buttonText: "Coming Soon",
+      backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
+    },
+    {
+      title: "DISCOVER NEW WORLDS",
+      buttonText: "Explore Now",
+      backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
+    },
+    {
+      title: "CHALLENGE YOUR FRIENDS",
+      buttonText: "Get Started",
+      backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 3000); // Change slide every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div
@@ -14,53 +40,43 @@ export default function GameBanners() {
         top: "-30px",
       }}
     >
-      {/* Small Banner Above with Image Background and Overlay */}
+      {/* Header */}
       <div
+        className="flex items-center justify-center"
         style={{
-          width: "405px",
-          height: "50px", // Set a fixed height for the small banner
-          backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')", // Background image for the small banner
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          borderRadius: "15px", // Increased corner radius
-          position: "relative",
-          marginBottom: "0.5rem", // Space between small banner and upper banner
+          width: "100%",
+          padding: "1rem",
+          fontFamily: "'ZCOOL KuaiLe', sans-serif",
         }}
       >
-        {/* Overlay */}
-        <div
+        <img
+          src="https://example.com/logo.svg"
+          alt="Dino Horizon Logo"
+          style={{ width: "50px", height: "50px", marginRight: "1rem" }}
+        />
+        <h1
           style={{
-            background: "rgba(0, 0, 0, 0.6)", // Black overlay
-            width: "100%",
-            height: "100%",
-            borderRadius: "15px", // Match parent border radius
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            fontSize: "24px",
+            fontWeight: "bold",
+            margin: 0,
+            color: "#ffffff",
+            fontFamily: "'ZCOOL KuaiLe', sans-serif",
           }}
         >
-          {/* Real Icon */}
-          <img
-            src="https://path/to/your/icon.png" // Replace with your icon URL
-            alt="Dino Icon"
-            style={{ width: "30px", height: "30px", marginRight: "10px" }} // Adjust size and margin as needed
-          />
-          <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#ffffff", margin: 0 }}>
-            Welcome Dino Horizon
-          </h2>
-        </div>
+          Welcome Dino Horizon
+        </h1>
       </div>
 
-      {/* Upper Banner */}
+      {/* Upper Banner with Slider */}
       <div
         style={{
           width: "405px",
           height: "330px",
-          backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
+          backgroundImage: slides[currentSlide].backgroundImage,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          borderRadius: "15px", // Increased corner radius
+          borderRadius: "15px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
@@ -73,42 +89,69 @@ export default function GameBanners() {
         {/* Overlay for Title and Button */}
         <div
           style={{
-            background: "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))", // Transparent to black gradient from right to left
-            width: "100%", // Match the width of the banner
+            background: "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
+            width: "100%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center", // Center contents vertically
+            justifyContent: "center",
             alignItems: "flex-start",
-            borderRadius: "15px", // Match parent border radius
-            padding: "10px", // Padding for upper banner
+            borderRadius: "15px",
+            padding: "10px",
           }}
         >
           <h2
             style={{
               fontSize: "20px",
               fontWeight: "bold",
-              margin: "0 0 10px 20px", // Adjust margin for title
+              margin: "0 0 10px 20px",
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
-            TAP AND COLLECT DINO
+            {slides[currentSlide].title}
           </h2>
           <button
             onClick={() => setButtonText("Loading...")}
             style={{
-              padding: "8px 16px", // Reduced padding for button
+              padding: "8px 16px",
               background: "linear-gradient(to bottom, #FCD113, #F6BA06)",
               color: "#ffffff",
               borderRadius: "12px",
               fontSize: "19px",
               fontWeight: "bold",
               border: "none",
-              marginLeft: "20px", // Align button with heading
-              fontFamily: "'ZCOOL KuaiLe', sans-serif", // Set button font
+              marginLeft: "20px",
+              fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
-            {buttonText}
+            {slides[currentSlide].buttonText}
           </button>
+        </div>
+
+        {/* Dots for Slide Indicator */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            gap: "8px",
+          }}
+        >
+          {slides.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => setCurrentSlide(index)} // Allow clicking dots to change slide
+              style={{
+                width: index === currentSlide ? "12px" : "8px",
+                height: index === currentSlide ? "12px" : "8px",
+                backgroundColor: index === currentSlide ? "#ffffff" : "#cccccc",
+                borderRadius: "50%",
+                transition: "width 0.3s, height 0.3s, background-color 0.3s",
+                cursor: "pointer",
+              }}
+            ></div>
+          ))}
         </div>
       </div>
 
@@ -121,7 +164,7 @@ export default function GameBanners() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          borderRadius: "15px", // Increased corner radius
+          borderRadius: "15px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
@@ -129,43 +172,43 @@ export default function GameBanners() {
           color: "#000",
         }}
       >
-        {/* Overlay for Title and Button */}
+        {/* Static Content for Lower Banner */}
         <div
           style={{
-            background: "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))", // Transparent to black gradient from right to left
-            width: "100%", // Match the width of the banner
+            background: "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))",
+            width: "100%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end", // Adjusted to align contents to the bottom
+            justifyContent: "flex-end",
             alignItems: "flex-start",
-            borderRadius: "15px", // Match parent border radius
-            padding: "5px", // Reduced padding to lower height
+            borderRadius: "15px",
+            padding: "5px",
           }}
         >
           <h2
             style={{
               fontSize: "20px",
               fontWeight: "bold",
-              margin: "0 0 5px 20px", // Adjust margin for title
+              margin: "0 0 5px 20px",
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
-            RUN, JUMP & EARN DINO
+            TAP AND COLLECT DINO
           </h2>
           <button
             style={{
-              padding: "8px 16px", // Reduced padding for button
+              padding: "8px 16px",
               background: "linear-gradient(to bottom, #FCD113, #F6BA06)",
               color: "#ffffff",
               borderRadius: "12px",
               fontSize: "16px",
               fontWeight: "bold",
               border: "none",
-              marginLeft: "20px", // Align button with heading
-              fontFamily: "'ZCOOL KuaiLe', sans-serif", // Set button font
+              marginLeft: "20px",
+              fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
-            Coming Soon
+            {buttonText}
           </button>
         </div>
       </div>
