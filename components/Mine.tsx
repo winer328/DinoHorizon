@@ -71,7 +71,7 @@ export default function GameBanners() {
       <div
         style={{
           width: "405px",
-          height: "330px",
+          height: "320px",
           backgroundImage: slides[currentSlide].backgroundImage,
           backgroundSize: "cover",
           backgroundPosition: "center",
