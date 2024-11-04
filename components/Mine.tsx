@@ -50,7 +50,7 @@ export default function GameBanners() {
         }}
       >
         <img
-          src="https://example.com/logo.svg"
+          src="https://raw.githubusercontent.com/thedefidude18/dinohorizon/main/images/dinomario.svg"
           alt="Dino Horizon Logo"
           style={{ width: "50px", height: "50px", marginRight: "1rem" }}
         />
