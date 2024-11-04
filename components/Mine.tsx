@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useState } from "react";
 import {
   calculateMineUpgradeCost,
@@ -24,6 +25,18 @@ export default function Mine() {
     upgradeMineLevelIndex,
   } = useGameStore();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+
+    // Cleanup on unmount
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   const upgradeCost = calculateMineUpgradeCost(mineLevelIndex);
   const upgradeIncrease =
@@ -54,7 +67,6 @@ export default function Mine() {
 
         console.log("Result from server:", result);
 
-        // Update local state with the new values
         upgradeMineLevelIndex();
 
         showToast("Mine Upgrade Successful!", "success");
@@ -68,70 +80,131 @@ export default function Mine() {
   };
 
   return (
-    <div
+    <div 
       className="flex justify-center min-h-screen"
       style={{
-        background: "linear-gradient(to bottom, #575EFF, #0ECBFF 94%)",
+        background: "linear-gradient(to bottom, #575EFF, #0ECBFF 94%)"
       }}
     >
-      <div className="w-full text-[#D62125] font-bold flex flex-col max-w-xl">
+      <div className="w-full text-[#150707] font-bold flex flex-col max-w-xl">
         <div className="flex-grow mt-4 rounded-t-[48px] relative top-glow z-0">
           <div className="mt-[2px] rounded-t-[46px] h-full overflow-y-auto no-scrollbar bg-opacity-0">
             <div className="px-4 pt-1 pb-24">
-              <h1 className="text-2xl text-center mt-4 text-[#D62125]">
+              <h1
+                style={{
+                  fontFamily: 'ZCOOL KuaiLe, sans-serif',
+                  fontSize: '1.5rem',
+                  textAlign: 'center',
+                  marginTop: '1rem',
+                  color: '#ffffff',
+                }}
+              >
                 Upgrade
               </h1>
 
               <div className="px-4 mt-4 flex justify-center">
-                <div className="px-4 py-2 flex items-center space-x-2 bg-[#280101] opacity-80 rounded-full">
+                <div className="px-4 py-2 flex items-center space-x-2 bg-[#ff47f3] opacity-80 rounded-full">
                   <Image src={avatar} alt="Exchange" width={40} height={40} />
-                  <p className="text-4xl text-[#D62125]" suppressHydrationWarning>
+                  <p className="text-4xl text-[#fffff]" suppressHydrationWarning>
                     {Math.floor(pointsBalance).toLocaleString()}
                   </p>
                 </div>
               </div>
+              <div style={{
+    position: 'relative',
+    borderRadius: '25px',
+    padding: '16px',
+    marginTop: '24px',
+    overflow: 'hidden',
+}}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="402" height="112" viewBox="0 0 402 112" style={{
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        zIndex: '-1',
+    }}>
+        <rect x="1" y="1" width="400" height="110" rx="19" fill="#AC36A0"/>
+        <path d="M1 20C1 9.50659 9.50659 1 20 1H382C392.493 1 401 9.50659 401 20V89C401 99.4934 392.493 108 382 108H20C9.5066 108 1 99.4934 1 89V20Z" fill="white"/>
+    </svg>
+    
+    <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '8px' // Reduced margin
+    }}>
+        <p>Current Dinoh per hour:</p>
+        <p style={{ color: '#D62024' }}>{formatNumber(profitPerHour)}</p>
+    </div>
+    <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '8px' // Reduced margin
+    }}>
+        <p>Upgrade cost:</p>
+        <p style={{ color: '#D62024' }}>{formatNumber(upgradeCost)}</p>
+    </div>
+    <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    }}>
+        <p>Dinoh per hour increase:</p>
+        <p style={{ color: '#D62024' }}>+{formatNumber(upgradeIncrease)}</p>
+    </div>
+</div>
 
-              <div className="bg-gradient-to-r from-red-900 to-neutral-900 rounded-lg p-4 mt-6">
-                <div className="flex justify-between items-center mb-4">
-                  <p>Current Dinoh per hour:</p>
-                  <p className="text-[#D62024]">{formatNumber(profitPerHour)}</p>
-                </div>
-                <div className="flex justify-between items-center mb-4">
-                  <p>Upgrade cost:</p>
-                  <p className="text-[#D62024]">{formatNumber(upgradeCost)}</p>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p>Dinoh per hour increase:</p>
-                  <p className="text-[#D62024]">+{formatNumber(upgradeIncrease)}</p>
-                </div>
-              </div>
 
-              <button
-                onClick={handleUpgrade}
-                disabled={pointsBalance < upgradeCost || isLoading}
-                className={`w-full mt-6 py-3 rounded-lg text-center text-[#D62125] font-bold ${
-                  pointsBalance >= upgradeCost && !isLoading
-                    ? "bg-[#280101]"
-                    : "bg-[#6B7280] cursor-not-allowed"
-                } relative`}
-              >
-                {isLoading ? (
-                  <div className="flex justify-center items-center">
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                  </div>
-                ) : (
-                  "Upgrade"
-                )}
-              </button>
+<>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+  </style>
+  <button
+    onClick={handleUpgrade}
+    disabled={pointsBalance < upgradeCost || isLoading}
+    className={`
+      w-full mt-6 py-2.5 px-4
+      rounded-lg font-['ZCOOL_KuaiLe'] text-lg
+      border-2 transition-all duration-300
+      ${pointsBalance >= upgradeCost && !isLoading
+        ? `
+          bg-gradient-to-b from-[#FCD113] to-[#F6BA06]
+          text-[#ffff] border-[#FCD113]
+          hover:shadow-[0_0_15px_rgba(252,209,19,0.4)]
+          hover:scale-105 active:scale-95
+        `
+        : `
+          bg-gradient-to-b from-[#FCD113] to-[#F6BA06]
+          text-gray-400 border-gray-600
+          cursor-not-allowed
+        `
+      }
+    `}
+  >
+    {isLoading ? (
+      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto" />
+    ) : (
+      "UPGRADE"
+    )}
+  </button>
+</>
 
-              <div className="bg-[#280101] rounded-lg p-4 mt-6 flex items-center justify-between">
-                <Info className="w-6 h-6 text-[#D62024] mr-3 flex-shrink-0 mt-1" />
-                <p className="text-sm text-gray-300 items-center text-center">
-                  Your mine will continue to produce Dinoh coins for up to
-                  <span className="text-[#D62125] font-bold"> {maxInactiveHours} hours</span> after your last interaction. Remember to check in
-                  often to optimize your production!
-                </p>
-              </div>
+              <div className="relative p-4 mt-6 flex items-center justify-between" style={{ width: '402px', height: '112px' }}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="402" height="112" viewBox="0 0 402 112" fill="none" className="absolute inset-0">
+    <rect x="1" y="1" width="400" height="110" rx="19" fill="#AC36A0"/>
+    <path d="M1 20C1 9.50659 9.50659 1 20 1H382C392.493 1 401 9.50659 401 20V89C401 99.4934 392.493 108 382 108H20C9.5066 108 1 99.4934 1 89V20Z" fill="white"/>
+  </svg>
+  
+  <div className="relative z-10 flex items-center justify-between w-full px-4">
+    <Info className="w-6 h-6 text-[#35abff] mr-3 flex-shrink-0 mt-1" />
+    <p className="text-sm text-[#000] text-center">
+      Your mine will continue to produce Dinoh coins for up to
+      <span className="text-[#000] font-bold"> {maxInactiveHours} hours</span> after your last interaction. Remember to check in often to optimize your production!
+    </p>
+  </div>
+</div>
+
             </div>
           </div>
         </div>
