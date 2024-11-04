@@ -153,9 +153,29 @@ export default function Airdrop() {
                                 <div className="flex justify-center mb-4">
                                     <Image src={avatar} alt="owl Token" width={96} height={96} className="rounded-lg mr-2" />
                                 </div>
-                                <h1 className="text-4xl text-center mb-4 text-[#fffff]">Airdrop</h1>
+                                <h1
+         style={{
+         fontFamily: "'ZCOOL KuaiLe', sans-serif",
+         fontSize: '1.5rem',
+         textAlign: 'center',
+         marginTop: '1rem',
+         color: '#ffffff',
+         }}
+         >
+         Rewards
+         </h1>
                                 <p className="text-white-500 text-center mb-4 font-normal">There is a list of challenges below. Complete them to qualify for the DINOH Airdrop.</p>
-                                <h2 className="text-[#fffff] text-lg mt-8 mb-4">Wallet</h2>
+                                <h1
+         style={{
+         fontFamily: "'ZCOOL KuaiLe', sans-serif",
+         fontSize: '1.5rem',
+         textAlign: 'center',
+         marginTop: '1rem',
+         color: '#ffffff',
+         }}
+         >
+         Wallet
+         </h1>
 
                                 {isLoading ? (
                                     <div className="flex justify-between items-center bg-gradient-to-r from-red-900 rounded-lg p-4 w-full">
@@ -206,24 +226,38 @@ export default function Airdrop() {
                                         </button>
                                     </div>
                                 )}
-                                <h2 className="text-[#fffff] text-lg font-bold mt-8 mb-4">Tasks</h2>
+                                <h1
+         style={{
+         fontFamily: "'ZCOOL KuaiLe', sans-serif",
+         fontSize: '1.5rem',
+         textAlign: 'center',
+         marginTop: '1rem',
+         color: '#ffffff',
+         }}
+         >
+         Tasks
+         </h1>
                                 <div className="space-y-2">
-                                    <button 
-                                        className="w-full flex justify-between items-center bg-gradient-to-r from-red-900 rounded-lg p-4"
-                                        onClick={handlePaidTaskClicked}
-                                    >
-                                        <div className="flex items-center">
-                                            <Image src={owl_coins} alt="Task Image" width={40} height={40} className="rounded-lg mr-2" />
-                                            <div className="flex flex-col">
-                                                <span className="text-lg text-white-500 font-bold">Ice Age Advancement</span>
-                                                <div className="flex items-center">
-                                                    <Image src={avatar} alt="Task Image" width={25} height={25} className="rounded-lg mr-2" />
-                                                    <span className="text-lg text-white-500 font-bold">+500K</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p className="text-[#fffff] font-bold text-2xl">0.5 TON</p>
-                                    </button>
+                                <button 
+    className="w-full flex justify-between items-center rounded-lg p-4"
+    onClick={handlePaidTaskClicked}
+    style={{
+        background: 'linear-gradient(to bottom, #FCD113, #F6BA06)', // Applying the linear gradient background
+    }}
+>
+    <div className="flex items-center">
+        <Image src={owl_coins} alt="Task Image" width={40} height={40} className="rounded-lg mr-2" />
+        <div className="flex flex-col">
+            <span className="text-lg text-white-500 font-bold">Ice Age Advancement</span>
+            <div className="flex items-center">
+                <Image src={avatar} alt="Task Image" width={25} height={25} className="rounded-lg mr-2" />
+                <span className="text-lg text-white-500 font-bold">+500K</span>
+            </div>
+        </div>
+    </div>
+    <p className="text-[#fffff] font-bold text-2xl">0.5 TON</p>
+</button>
+
                                 </div>
                             </div>
                         </div>
