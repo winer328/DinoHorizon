@@ -13,7 +13,6 @@ interface LoadingProps {
 export default function Loading({ setIsInitialized, setCurrentView }: LoadingProps) {
   const initializeState = useGameStore((state) => state.initializeState);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const openTimestampRef = useRef(Date.now());
   const [isAppropriateDevice, setIsAppropriateDevice] = useState(true);
   const [loadingPercentage, setLoadingPercentage] = useState(0);
 
@@ -52,14 +51,15 @@ export default function Loading({ setIsInitialized, setCurrentView }: LoadingPro
     setIsAppropriateDevice(ALLOW_ALL_DEVICES || device.type === 'mobile' || device.type === 'tablet');
 
     if (isAppropriateDevice) fetchOrCreateUser();
-  }, []);
+  }, [fetchOrCreateUser, isAppropriateDevice]);
 
   useEffect(() => {
+    // Set the interval to reach 100% in 3000ms (3 seconds)
     const loadingInterval = setInterval(() => {
-      setLoadingPercentage((prev) => (prev < 100 ? prev + 1 : 100));
+      setLoadingPercentage((prev) => (prev < 100 ? prev + (100 / 30) : 100)); // Increment by approx. 3.33% every 100ms
     }, 100);
 
-    if (loadingPercentage === 100) {
+    if (loadingPercentage >= 100) {
       clearInterval(loadingInterval);
       const timer = setTimeout(() => {
         setCurrentView('game');
@@ -107,7 +107,7 @@ export default function Loading({ setIsInitialized, setCurrentView }: LoadingPro
             width: '100%',
           }}
         >
-          {loadingPercentage}%
+          {Math.round(loadingPercentage)}%  {/* Round to avoid decimal percentage */}
         </div>
       </div>
 
