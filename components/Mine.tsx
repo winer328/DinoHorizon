@@ -14,6 +14,43 @@ export default function GameBanners() {
         top: "-30px",
       }}
     >
+      {/* Small Banner Above with Image Background and Overlay */}
+      <div
+        style={{
+          width: "405px",
+          height: "50px", // Set a fixed height for the small banner
+          backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')", // Background image for the small banner
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          borderRadius: "15px", // Increased corner radius
+          position: "relative",
+          marginBottom: "0.5rem", // Space between small banner and upper banner
+        }}
+      >
+        {/* Overlay */}
+        <div
+          style={{
+            background: "rgba(0, 0, 0, 0.6)", // Black overlay
+            width: "100%",
+            height: "100%",
+            borderRadius: "15px", // Match parent border radius
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* Real Icon */}
+          <img
+            src="https://path/to/your/icon.png" // Replace with your icon URL
+            alt="Dino Icon"
+            style={{ width: "30px", height: "30px", marginRight: "10px" }} // Adjust size and margin as needed
+          />
+          <h2 style={{ fontSize: "18px", fontWeight: "bold", color: "#ffffff", margin: 0 }}>
+            Welcome Dino Horizon
+          </h2>
+        </div>
+      </div>
+
       {/* Upper Banner */}
       <div
         style={{
@@ -79,7 +116,7 @@ export default function GameBanners() {
       <div
         style={{
           width: "405px",
-          height: "200px",
+          height: "240px",
           backgroundImage: "url('https://raw.githubusercontent.com/RollupRadar/project23/main/images/tappo2.svg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -113,7 +150,7 @@ export default function GameBanners() {
               fontFamily: "'ZCOOL KuaiLe', sans-serif",
             }}
           >
-            RUN, JUMP AND COLLECT <br /> EARN DINO
+            RUN, JUMP & EARN DINO
           </h2>
           <button
             style={{
