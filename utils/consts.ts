@@ -9,6 +9,7 @@ import {
   Lord,
   Creator,
   main_character,
+  character_one,
 } from "@/images";
 import { StaticImageData } from "next/image";
 
@@ -31,7 +32,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Gold",
     minPoints: 0,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Gold,
     color: "#2adaf8",
     friendBonus: 0,
@@ -40,7 +41,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Platinum",
     minPoints: 5000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Platinum,
     color: "#d64767",
     friendBonus: 20000,
@@ -49,7 +50,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Diamaond",
     minPoints: 25000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Diamaond,
     color: "#e9c970",
     friendBonus: 30000,
@@ -58,7 +59,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Epic",
     minPoints: 100000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Epic,
     color: "#73e94b",
     friendBonus: 40000,
@@ -67,7 +68,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Legendary",
     minPoints: 1000000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Legendary,
     color: "#4ef0ba",
     friendBonus: 60000,
@@ -76,7 +77,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Master",
     minPoints: 2000000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Master,
     color: "#1a3ae8",
     friendBonus: 100000,
@@ -85,7 +86,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Grandmaster",
     minPoints: 10000000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Grandmaster,
     color: "#902bc9",
     friendBonus: 250000,
@@ -94,7 +95,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Lord",
     minPoints: 50000000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Lord,
     color: "#fb8bee",
     friendBonus: 500000,
@@ -103,7 +104,7 @@ export const LEVELS: LevelData[] = [
   {
     name: "Creator",
     minPoints: 100000000,
-    bigImage: main_character,
+    bigImage: character_one,
     smallImage: Creator,
     color: "#e04e92",
     friendBonus: 1000000,
