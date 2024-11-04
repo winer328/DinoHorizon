@@ -58,7 +58,7 @@ export default function Friends() {
 
   const handleCopyInviteLink = useCallback(() => {
     navigator.clipboard
-      .writeText(process.env.NEXT_PUBLIC_BOT_USERNAME ? `https://t.me/${process.env.NEXT_PUBLIC_BOT_USERNAME}/${process.env.NEXT_PUBLIC_APP_URL_SHORT_NAME}?startapp=kentId${getUserTelegramId(userTelegramInitData) || ""}` : "https://t.me/dinohorizonbot")
+      .writeText(process.env.NEXT_PUBLIC_BOT_USERNAME ? `https://t.me/${process.env.NEXT_PUBLIC_BOT_USERNAME}/${process.env.NEXT_PUBLIC_APP_URL_SHORT_NAME}?startapp=kentId${getUserTelegramId(userTelegramInitData) || ""}` : "https://t.me/dinohorizonnews")
       .then(() => {
         setCopyButtonText("Copied!");
         showToast("Invite link copied to clipboard!", 'success');
@@ -79,9 +79,9 @@ export default function Friends() {
 
     const inviteLink = botUsername
       ? `https://t.me/${process.env.NEXT_PUBLIC_BOT_USERNAME}/${process.env.NEXT_PUBLIC_APP_URL_SHORT_NAME}?startapp=kentId${userTelegramId || ""}`
-      : "https://t.me/clicker_game_news";
+      : "https://t.me/dinohorizonnews";
 
-    const shareText = ` Join me in Dino Horizon!: Tap, Earn, and Win! 🏆\n🚀 Let's play and earn together!`;
+    const shareText = ` Join me in Dino Horizon! 🦕 : Tap, Earn, and Win! 🏆\n🚀 Let's play and earn together!`;
 
     try {
       const utils = initUtils();
