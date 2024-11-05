@@ -201,6 +201,7 @@ export default function Airdrop() {
                                         </div>
                                         <Angle size={42} className="text-[#fffff]" />
                                     </button>
+                                
                                 ) : (
                                     <div className="flex gap-2">
                                         <button
@@ -239,24 +240,34 @@ export default function Airdrop() {
          </h1>
                                 <div className="space-y-2">
                                 <button 
-    className="w-full flex justify-between items-center rounded-lg p-4"
+    className="w-full flex justify-between items-center rounded-lg p-4 relative overflow-hidden"
     onClick={handlePaidTaskClicked}
     style={{
-        background: 'linear-gradient(to bottom, #FCD113, #F6BA06)', // Applying the linear gradient background
+        backgroundColor: '#FFFFFF', // White button surface for contrast
+        borderRadius: '19px', // Rounded corners for a softer look
+        position: 'relative',
+        padding: '1.5rem',
+        boxShadow: '0 4px 0 #AC36A0, 0 6px 15px rgba(0, 0, 0, 0.2)', // Thinner magenta base with adjusted shadow
     }}
 >
-    <div className="flex items-center">
+    {/* Content Layer */}
+    <div className="relative z-10 flex items-center">
         <Image src={owl_coins} alt="Task Image" width={40} height={40} className="rounded-lg mr-2" />
         <div className="flex flex-col">
-            <span className="text-lg text-white-500 font-bold">Ice Age Advancement</span>
+            <span className="text-lg font-bold text-[#170515]">Ice Age Advancement</span>
             <div className="flex items-center">
                 <Image src={avatar} alt="Task Image" width={25} height={25} className="rounded-lg mr-2" />
-                <span className="text-lg text-white-500 font-bold">+500K</span>
+                <span className="text-lg font-bold text-[#070207]">+500K</span>
             </div>
         </div>
     </div>
-    <p className="text-[#fffff] font-bold text-2xl">0.5 TON</p>
+
+    {/* Right-side TON value */}
+    <p className="text-[#000000] font-bold text-1xl relative z-10">0.5 TON</p>
 </button>
+
+
+
 
                                 </div>
                             </div>
